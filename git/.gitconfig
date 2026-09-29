@@ -1,0 +1,7 @@
+[user]
+	email = rontrade@outlook.com
+	name = Ronak Parekh
+[core]
+	excludesfile = ~/.gitignore_global
+[include]
+	path = ~/.gitconfig.local
