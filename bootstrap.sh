@@ -5,7 +5,8 @@
 #
 # Order: apt packages (incl. gh) -> hardening -> gh auth -> Neovim release
 # tarball -> uv -> dotfiles via stow + plugin restore -> gh git credential
-# helper -> Claude Code -> claude-agent-kit-linux install + doctor.
+# helper -> Claude Code -> claude-agent-kit-linux install + doctor
+# -> rtk hook.
 #
 # Secrets are prompted on the terminal, or read from the environment for
 # unattended runs (cloud-init). Neither is ever written into this repo.
@@ -298,6 +299,11 @@ install_kit() {
   "$KIT_DIR/install.sh" doctor
 }
 
+install_rtk_hook() {
+  log "rtk Claude Code hook"
+  "$BIN_DIR/rtk" init -g --auto-patch
+}
+
 main() {
   preflight
   install_apt
@@ -309,6 +315,7 @@ main() {
   gh_setup_git
   install_claude
   install_kit
+  install_rtk_hook
   log "done. Open a new shell (or: source ~/.bashrc), then fully restart Claude Code."
 }
 
