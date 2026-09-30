@@ -262,7 +262,6 @@ install_bashrc_block() {
 
 $begin
 case ":\$PATH:" in *":\$HOME/.local/bin:"*) ;; *) PATH="\$HOME/.local/bin:\$PATH" ;; esac
-[ -r "\$HOME/.config/claude-env" ] && . "\$HOME/.config/claude-env"
 $end
 BLOCK
 }
